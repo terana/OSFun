@@ -1,0 +1,1 @@
+int RPCprintf(const char * restrict format, int val);
