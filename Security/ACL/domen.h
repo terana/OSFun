@@ -5,20 +5,18 @@
 #include "file.h"
 #ifndef RIGHTS_H
 #define RIGHTS_H
-
 #include "rights.h"
-
 #endif
-class domen
+class Domen
 {
 public:
 	std::string name;
 
-	domen(std::string name): name(name) {};
-	~domen() {};
+	Domen(std::string name): name(name) {};
+	~Domen() {};
 
-	void addAccessRights(file& f, AccessRight ar) {
-		_domen.insert(std::pair<std::string, AccessRight::AccessRight>(f.name ,ar));
+	void addAccessRights(File& f, AccessRight ar) {
+		_domen.insert(std::pair<std::string, AccessRight>(f.name ,ar));
 		f.addToACL(name, ar);
 	}
 

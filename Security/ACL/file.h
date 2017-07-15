@@ -7,14 +7,14 @@
 #include "rights.h"
 
 #endif
-class file
+class File
 {
 public:
 	std::string name;
 	std::string owner;
 
-	file(std::string name, std::string owner): name(name), owner(owner) {
-		_acl.insert(std::pair<std::string, AccessRight::AccessRight>(owner,AccessRight::AccessRight("rwx")) );
+	File(std::string name, std::string owner): name(name), owner(owner) {
+		_acl.insert(std::pair<std::string, AccessRight>(owner,AccessRight::AccessRight("rwx")) );
 	}
 
 	void printACL() {
@@ -23,10 +23,10 @@ public:
 	}
 
 	void addToACL(std::string domen, AccessRight right) {
-		_acl.insert(std::pair<std::string, AccessRight::AccessRight>(domen, right));
+		_acl.insert(std::pair<std::string, AccessRight>(domen, right));
 	}
 
-	~file(){};
+	~File(){};
 private:
-	std::map<std::string, AccessRight::AccessRight> _acl;
+	std::map<std::string, AccessRight> _acl;
 };
