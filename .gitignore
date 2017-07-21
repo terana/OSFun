@@ -3,3 +3,8 @@
 
 # bin
 a.out
+run
+
+# test files
+*dst
+*src
