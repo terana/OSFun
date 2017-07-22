@@ -9,7 +9,7 @@
 
 #define SERV_PATH "serv_sock"
 
-extern void copy (int src_fd, int dst_fd);
+extern long  copy (int src_fd, int dst_fd);
 
 int main() {
 	int sock_fd = socket(PF_LOCAL, SOCK_STREAM, 0);
@@ -49,7 +49,8 @@ int main() {
 		exit(1);
 	}
 
-	copy(det_sock_fd, dst_fd);
+	long time = copy(det_sock_fd, dst_fd);
+	printf("Server time: %ld", time);
 
 	close(det_sock_fd);
 	close(sock_fd);

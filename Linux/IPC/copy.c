@@ -2,10 +2,13 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <time.h>
+
+#include "prod_cons.h"
 
 #define BSIZE 1000
 
-void copy (int src_fd, int dst_fd) {
+long copy (int src_fd, int dst_fd) {
 	char* buf = malloc(BSIZE * sizeof(char));
 	if (buf == NULL) {
 		perror("Can't create buffer: ");
@@ -13,6 +16,7 @@ void copy (int src_fd, int dst_fd) {
 	}
 
 	int n;
+	time_t begin = time(NULL);
 	do {
 		n = read(src_fd, buf, BSIZE);
 		if (n < 0) {
@@ -25,5 +29,7 @@ void copy (int src_fd, int dst_fd) {
 			exit(1);
 		}
 	} while (n > 0);
+	time_t end = time(NULL);
 	free(buf);
+	return end - begin;
 }

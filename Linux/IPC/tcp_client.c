@@ -4,10 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <fcntl.h> 
 
 #define SERV_PATH "serv_sock"
 
-extern void copy (int src_fd, int dst_fd);
+extern long  copy (int src_fd, int dst_fd);
 
 
 int main () {
@@ -34,7 +36,8 @@ int main () {
 		exit(1);
 	}
 
-	copy(src_fd, sock_fd);
+	long time = copy(src_fd, sock_fd);
+	printf("Client time: %ld", time);
 
 	close(sock_fd);
 	close(src_fd);
