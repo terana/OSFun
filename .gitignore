@@ -5,6 +5,9 @@
 a.out
 run
 
+#debug
+*.dSYM
+
 # test files
 *dst
 *src
